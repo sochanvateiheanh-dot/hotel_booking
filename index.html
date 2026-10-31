@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Grand Hotel Phnom Penh · Luxury Stays & Suites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --border: #e8e3d9;
+      --accent: #8b5d33;
+      --accent-hover: #704724;
+      --accent-soft: #f4ede4;
+      --success: #2e7d32;
+      --danger: #c62828;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.16);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #121316;
+        --surface: #1b1d22;
+        --text: #f0ede8;
+        --muted: #9a9ca6;
+        --border: #2d3038;
+        --accent: #d99f66;
+        --accent-hover: #e8b079;
+        --accent-soft: #2c241c;
+        --success: #66bb6a;
+        --danger: #ef5350;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #121316;
+      --surface: #1b1d22;
+      --text: #f0ede8;
+      --muted: #9a9ca6;
+      --border: #2d3038;
+      --accent: #d99f66;
+      --accent-hover: #e8b079;
+      --accent-soft: #2c241c;
+      --success: #66bb6a;
+      --danger: #ef5350;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cinzel', Georgia, serif;
+      letter-spacing: 0.02em;
+    }
+
+    /* Top Sticky Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 245, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    [data-theme="dark"] .navbar {
+      background: rgba(18, 19, 22, 0.85);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .navbar {
+        background: rgba(18, 19, 22, 0.85);
+      }
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      padding: 2px 9px;
+      border-radius: 4px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      background: none;
+      border: 0;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .nav-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 13.5px;
+      border: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 480px;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      padding: 0 20px;
+    }
+
+    .hero-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 15.5px;
+      max-width: 680px;
+      opacity: 0.95;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* Floating Booking Bar */
+    .booking-bar-wrapper {
+      position: relative;
+      max-width: 1050px;
+      margin: -50px auto 40px;
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    .booking-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 820px) {
+      .booking-bar {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        height: 420px;
+      }
+      .hero-title {
+        font-size: 30px;
+      }
+      .booking-bar-wrapper {
+        margin-top: -20px;
+      }
+    }
+
+    .bar-field {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bar-field label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .bar-field input, .bar-field select {
+      background: none;
+      border: 0;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .bar-btn {
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      border-radius: var(--radius-md);
+      padding: 16px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .bar-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 24px 80px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Editorial Room Grid */
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 26px;
+    }
+
+    .room-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .room-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .room-media {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--border);
+    }
+
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .room-card:hover .room-media img {
+      transform: scale(1.04);
+    }
+
+    .room-price-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(18, 19, 22, 0.85);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .room-price-tag b {
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    .room-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .room-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .room-specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .spec-badge {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--accent-soft);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .room-desc {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .room-action {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .room-action-btn {
+      background: var(--surface);
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .room-action-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Modal / Drawer Overlays */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-sheet {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-backdrop.open .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-close {
+      background: none;
+      border: 0;
+      font-size: 22px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    .modal-body {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Booking Form Fields */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+    }
+
+    /* Multi-Room Selector */
+    .room-picker-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      background: var(--bg);
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stepper-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stepper-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Summary Card */
+    .summary-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      margin-bottom: 8px;
+    }
+
+    .summary-total {
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14.5px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.2s;
+    }
+
+    .btn-checkout:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Receipt Folio */
+    .receipt-slip {
+      background: var(--bg);
+      border: 1px dashed var(--border);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .footer-created-by {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-mark">GH</span>
+        <span class="brand-name">GRAND HOTEL</span>
+      </a>
+      <div class="nav-links">
+        <button class="nav-link" onclick="scrollToRooms()">Suites & Rates</button>
+        <button class="nav-link" onclick="openHistoryModal()">My Reservation</button>
+        <button class="nav-link" onclick="toggleTheme()">🌓 Theme</button>
+        <button class="nav-btn" onclick="openBookingModal()">Book Stay</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="hero-badge">Boutique Hospitality · Phnom Penh</div>
+    <h1 class="hero-title">Experience Tranquility in Every Detail</h1>
+    <p class="hero-subtitle">Grand Hotel offers a cozy and relaxing stay with warm wooden interiors, soft neutral colors, simple designs, and easy digital check-in.</p>
+  </section>
+
+  <!-- Floating Booking Bar -->
+  <div class="booking-bar-wrapper">
+    <div class="booking-bar">
+      <div class="bar-field">
+        <label>Check-in Date</label>
+        <input type="date" id="bar-ci">
+      </div>
+      <div class="bar-field">
+        <label>Check-out Date</label>
+        <input type="date" id="bar-co">
+      </div>
+      <div class="bar-field">
+        <label>Selected Tier</label>
+        <select id="bar-tier">
+          <option value="-1">All Accommodations (5 Tiers)</option>
+          <option value="0">Single Room ($50/night)</option>
+          <option value="1">Double Room ($80/night)</option>
+          <option value="2">Twin Room ($130/night)</option>
+          <option value="3">Deluxe Room ($200/night)</option>
+          <option value="4">Suite ($220/night)</option>
+        </select>
+      </div>
+      <button class="bar-btn" onclick="syncBarToBooking()">Reserve Now</button>
+    </div>
+  </div>
+
+  <!-- Main Room Showcase -->
+  <main class="container">
+    <div class="section-header" id="suites-section">
+      <div>
+        <h2 class="section-title">Rooms & Suites</h2>
+        <p class="section-sub">Transparent rates · Maximum 10 rooms per reservation</p>
+      </div>
+      <span class="spec-badge" style="font-size:13px; padding:6px 12px;">Official Project Portfolio</span>
+    </div>
+
+    <div class="room-grid" id="rooms-grid"></div>
+  </main>
+
+  <!-- Split Booking & Checkout Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 style="font-size:18px;">Reserve Your Stay</h3>
+        <button class="modal-close" onclick="closeModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h4 style="font-size:14px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:12px;">1. Guest Information</h4>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="guest-name" class="form-control" placeholder="e.g. Somnang Chan">
+          </div>
+          <div class="form-group">
+            <label>Phone Number (9 or 10 digits) *</label>
+            <input type="text" id="guest-phone" class="form-control" placeholder="e.g. 012345678">
+          </div>
+          <div class="form-group">
+            <label>Email Address (Optional)</label>
+            <input type="text" id="guest-email" class="form-control" placeholder="name@example.com">
+          </div>
+
+          <h4 style="font-size:14px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin:18px 0 10px;">2. Stay Dates</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="form-group">
+              <label>Check-In *</label>
+              <input type="date" id="modal-ci" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Check-Out *</label>
+              <input type="date" id="modal-co" class="form-control">
+            </div>
+          </div>
+          <div id="date-notes" style="font-size:12.5px; color:var(--muted); margin-top:-6px; margin-bottom:14px;"></div>
+
+          <h4 style="font-size:14px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin:18px 0 10px;">3. Room Selection (Max 10)</h4>
+          <div id="room-selectors"></div>
+        </div>
+
+        <!-- Right Sticky Summary -->
+        <div class="summary-card">
+          <h4 style="font-size:16px; margin-bottom:14px;">Stay Summary</h4>
+          <div id="summary-items">Select dates and rooms to view breakdown.</div>
+          <div class="summary-total" id="summary-total-row" style="display:none;">
+            <span>Total Payable</span>
+            <span id="summary-total-val" style="color:var(--accent);">$0</span>
+          </div>
+          <p id="error-msg" style="color:var(--danger); font-size:12.5px; margin-top:8px; display:none;"></p>
+          <button class="btn-checkout" onclick="validateAndProceedPay()">Proceed to KHQR Payment →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KHQR Payment Screen Modal -->
+  <div class="modal-backdrop" id="khqr-modal">
+    <div class="modal-sheet" style="max-width:440px; text-align:center;">
+      <div class="modal-header">
+        <h3 style="font-size:16px; width:100%;">Bakong KHQR Payment</h3>
+        <button class="modal-close" onclick="closeModals()">✕</button>
+      </div>
+      <div style="padding:24px;">
+        <div style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em;">Grand Hotel Phnom Penh</div>
+        <div id="qr-container" style="margin:16px auto; width:190px; padding:10px; background:#fff; border-radius:12px; border:1px solid var(--border);"></div>
+        <div style="font-size:32px; font-weight:700; color:var(--text);" id="qr-amount">$0</div>
+        <div id="qr-khr" style="font-size:13px; color:var(--muted); margin-top:-2px;">≈ 0 KHR</div>
+        <p style="font-size:12.5px; color:var(--muted); margin:14px 0 20px;">Scan with any Bakong-compatible mobile banking app to settle 100% of the deposit.</p>
+        <button class="btn-checkout" style="background:var(--success); margin-top:0;" onclick="confirmBooking()">I Have Paid (Simulate Enter)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservation Folios & Cancellation Modal -->
+  <div class="modal-backdrop" id="history-modal">
+    <div class="modal-sheet" style="max-width:720px;">
+      <div class="modal-header">
+        <h3 style="font-size:18px;">Reservation History & Cancellation</h3>
+        <button class="modal-close" onclick="closeModals()">✕</button>
+      </div>
+      <div style="padding:24px;" id="history-content"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width:800px; margin:0 auto;">
+      <p style="font-weight:600; color:var(--text); margin-bottom:4px;">Grand Hotel Booking System</p>
+      <p>C++ Course Group Project Port · Full-Featured Web Client</p>
+      <p class="footer-created-by">Created by: Katakvatheni Chea & Sochanvatei Heanh</p>
+    </div>
+  </footer>
+
+  <script>
+    // Exact C++ Arrays and Pricing
+    const roomTypes = ["Single", "Double", "Twin", "Deluxe", "Suite"];
+    const roomPrices = [50, 80, 130, 200, 220]; // Single $50, Double $80, Twin $130, Deluxe $200, Suite $220
+    const MAX_ITEMS = 10;
+
+    // Direct high-res photo URLs (including Profitroom CDN's direct image URL for the Bachleda Deluxe Twin room)
+    const roomPhotos = [
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=700&q=80",
+      "https://r.profitroom.com/bachledaluxuryhotel/images/rooms/thumbs/1920x890/201909251309290.deluxe_z_dwoma_kami.jpg",
+      "https://i.pinimg.com/1200x/64/40/4f/64404fb92bfa2931fe33f388ce0daf54.jpg",
+      "https://cdn.home-designing.com/wp-content/uploads/2023/10/master-bedroom-suite-ideas-506x380.jpg"
+    ];
+
+    const roomDetails = [
+      ["1 Single Bed", "1 Guest", "18 m²", "Minimalist oak workstation, fast Wi-Fi, private rain shower."],
+      ["1 Queen Bed", "2 Guests", "24 m²", "Warm wood paneling, ambient nightstand sconces, 50\" TV, mini-bar."],
+      ["2 Single Beds", "2 Guests", "28 m²", "Refined luxury twin room featuring two plush beds, blue velvet headboard, floral woodwork, and sitting table."],
+      ["1 King Bed + Balcony", "2-3 Guests", "36 m²", "Bright sunlit deluxe bedroom opening directly onto a private balcony with panoramic garden view."],
+      ["1 Master King Bedroom + 1 Twin Bedroom (2 Single Beds)", "4-5 Guests", "85 m²", "Expansive luxury two-bedroom suite featuring a master king room, a private twin bedroom with 2 single beds, custom oak woodwork, cove lighting, and a connected living lounge."]
+    ];
+
+    // Data Structures Ported from C++
+    const customerNames = [];
+    const customerPhoneNumbers = [];
+    const customerEmails = [];
+    const bookedTypes = [];
+    const nightsBooked = [];
+    const totalCosts = [];
+    const bookingCancelled = [];
+    let totalBookings = 0;
+    let totalRevenue = 0;
+
+    // Local State
+    const Q = [0, 0, 0, 0, 0];
+    let pendingData = null;
+
+    const $ = id => document.getElementById(id);
+    const DAY = 864e5;
+    const ord = s => Math.floor(Date.parse(s + "T00:00:00Z") / DAY);
+    const fmt = o => new Date(o * DAY).toISOString().slice(0, 10);
+    const esc = s => s.replace(/[&<>"]/g, c => "&#" + c.charCodeAt(0) + ";");
+
+    const todayS = new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+    const todayO = ord(todayS);
+
+    // Initial Date Setup
+    $("bar-ci").min = todayS;
+    $("bar-ci").value = todayS;
+    $("modal-ci").min = todayS;
+    $("modal-ci").value = todayS;
+
+    const tomorrowS = fmt(todayO + 1);
+    $("bar-co").min = tomorrowS;
+    $("bar-co").value = tomorrowS;
+    $("modal-co").min = tomorrowS;
+    $("modal-co").value = tomorrowS;
+
+    // Render Editorial Room Cards
+    function renderRoomCards() {
+      $("rooms-grid").innerHTML = roomTypes.map((t, i) => `
+        <div class="room-card">
+          <div class="room-media">
+            <img src="${roomPhotos[i]}" alt="${t}" loading="lazy" referrerpolicy="no-referrer">
+            <div class="room-price-tag"><b>$${roomPrices[i]}</b> / night</div>
+          </div>
+          <div class="room-content">
+            <h3 class="room-name">${t} Room</h3>
+            <div class="room-specs">
+              <span class="spec-badge">${roomDetails[i][0]}</span>
+              <span class="spec-badge">${roomDetails[i][1]}</span>
+              <span class="spec-badge">${roomDetails[i][2]}</span>
+            </div>
+            <p class="room-desc">${roomDetails[i][3]}</p>
+            <div class="room-action">
+              <span style="font-size:12px; color:var(--muted);">Tier ID: #${i + 1}</span>
+              <button class="room-action-btn" onclick="directBookRoom(${i})">Reserve This Room →</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+    renderRoomCards();
+
+    // Render Room Selectors in Modal
+    function renderRoomSelectors() {
+      const curRooms = Q.reduce((a, b) => a + b, 0);
+      $("room-selectors").innerHTML = roomTypes.map((t, i) => `
+        <div class="room-picker-item">
+          <div>
+            <b style="font-size:14px;">${t}</b>
+            <div style="font-size:12px; color:var(--accent); font-weight:600;">$${roomPrices[i]} / night</div>
+          </div>
+          <div class="stepper">
+            <button class="stepper-btn" onclick="alterRoom(${i}, -1)" ${Q[i] ? "" : "disabled"}>−</button>
+            <b style="min-width:18px; text-align:center;">${Q[i]}</b>
+            <button class="stepper-btn" onclick="alterRoom(${i}, 1)" ${curRooms < MAX_ITEMS ? "" : "disabled"}>+</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    window.alterRoom = function(idx, delta) {
+      const cur = Q.reduce((a, b) => a + b, 0);
+      if (delta > 0 && cur >= MAX_ITEMS) return;
+      Q[idx] = Math.max(0, Q[idx] + delta);
+      renderRoomSelectors();
+      updateSummary();
+    };
+
+    function updateSummary() {
+      const ci = $("modal-ci").value;
+      const co = $("modal-co").value;
+      if (!ci || !co) return;
+
+      const n = ord(co) - ord(ci);
+      if (n < 1) {
+        $("date-notes").textContent = "Check-out must be after check-in.";
+        $("summary-items").innerHTML = "Please fix dates to continue.";
+        $("summary-total-row").style.display = "none";
+        return;
+      }
+
+      $("date-notes").textContent = `${n} night(s) stay (${ci} to ${co})`;
+      const totalSelected = Q.reduce((a, b) => a + b, 0);
+
+      if (totalSelected === 0) {
+        $("summary-items").innerHTML = "Select at least 1 room to compute bill.";
+        $("summary-total-row").style.display = "none";
+        return;
+      }
+
+      let breakdown = "";
+      let totalCost = 0;
+      roomTypes.forEach((t, i) => {
+        if (Q[i] > 0) {
+          const cost = roomPrices[i] * n * Q[i];
+          totalCost += cost;
+          breakdown += `
+            <div class="summary-row">
+              <span>${t} × ${Q[i]} (${n} nts)</span>
+              <b>$${cost}</b>
+            </div>
+          `;
+        }
+      });
+
+      $("summary-items").innerHTML = breakdown;
+      $("summary-total-row").style.display = "flex";
+      $("summary-total-val").textContent = `$${totalCost}`;
+    }
+
+    ["modal-ci", "modal-co"].forEach(id => {
+      $(id).onchange = () => {
+        if (id === "modal-ci") {
+          const next = fmt(ord($("modal-ci").value) + 1);
+          $("modal-co").min = next;
+          if ($("modal-co").value < next) $("modal-co").value = next;
+        }
+        updateSummary();
+      };
+    });
+
+    window.directBookRoom = function(idx) {
+      Q.fill(0);
+      Q[idx] = 1;
+      openBookingModal();
+    };
+
+    window.syncBarToBooking = function() {
+      $("modal-ci").value = $("bar-ci").value;
+      $("modal-co").value = $("bar-co").value;
+      const tier = parseInt($("bar-tier").value, 10);
+      Q.fill(0);
+      if (tier >= 0) Q[tier] = 1;
+      openBookingModal();
+    };
+
+    window.openBookingModal = function() {
+      closeModals();
+      renderRoomSelectors();
+      updateSummary();
+      $("booking-modal").classList.add("open");
+    };
+
+    window.closeModals = function() {
+      document.querySelectorAll(".modal-backdrop").forEach(m => m.classList.remove("open"));
+    };
+
+    window.scrollToRooms = function() {
+      $("suites-section").scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.validateAndProceedPay = function() {
+      const err = $("error-msg");
+      err.style.display = "none";
+
+      const name = $("guest-name").value.trim();
+      const phone = $("guest-phone").value.trim();
+      const email = $("guest-email").value.trim();
+      const ci = $("modal-ci").value;
+      const co = $("modal-co").value;
+
+      if (!name) {
+        err.textContent = "Name cannot be empty. Please enter your name.";
+        err.style.display = "block";
+        return;
+      }
+
+      if (phone.length !== 9 && phone.length !== 10) {
+        err.textContent = phone.length === 0 ? "Phone number cannot be empty." : "Invalid phone number. Must be 9 or 10 digits.";
+        err.style.display = "block";
+        return;
+      }
+
+      const n = ord(co) - ord(ci);
+      if (n < 1) {
+        err.textContent = "Please select a valid date range.";
+        err.style.display = "block";
+        return;
+      }
+
+      const totalRooms = Q.reduce((a, b) => a + b, 0);
+      if (totalRooms === 0) {
+        err.textContent = "Please choose at least one room.";
+        err.style.display = "block";
+        return;
+      }
+
+      let totalCost = 0;
+      const bookedIndices = [];
+      roomTypes.forEach((_, i) => {
+        for (let k = 0; k < Q[i]; k++) {
+          bookedIndices.push(i);
+          totalCost += roomPrices[i] * n;
+        }
+      });
+
+      pendingData = { name, phone, email, nights: n, totalCost, bookedIndices, ci, co };
+
+      closeModals();
+      $("qr-amount").textContent = `$${totalCost}`;
+      $("qr-khr").textContent = `≈ ${(totalCost * 4100).toLocaleString()} KHR`;
+      $("qr-container").innerHTML = generateQRSvg();
+      $("khqr-modal").classList.add("open");
+    };
+
+    window.confirmBooking = function() {
+      if (!pendingData) return;
+
+      customerNames.push(pendingData.name);
+      customerPhoneNumbers.push(pendingData.phone);
+      customerEmails.push(pendingData.email);
+      bookedTypes.push(pendingData.bookedIndices);
+      nightsBooked.push(pendingData.nights);
+      totalCosts.push(pendingData.totalCost);
+      bookingCancelled.push(false);
+
+      totalBookings++;
+      totalRevenue += pendingData.totalCost;
+
+      alert(`Booking Successful! Total Cost: $${pendingData.totalCost}\nThank you for booking with us, ${pendingData.name}!`);
+
+      $("guest-name").value = "";
+      $("guest-phone").value = "";
+      $("guest-email").value = "";
+      Q.fill(0);
+      pendingData = null;
+
+      closeModals();
+      openHistoryModal();
+    };
+
+    window.openHistoryModal = function() {
+      closeModals();
+      let html = "";
+      if (totalBookings === 0) {
+        html = `<p style="color:var(--muted); text-align:center; padding:30px 0;">No bookings found in the system yet.</p>`;
+      } else {
+        for (let i = 0; i < totalBookings; i++) {
+          const roomCounts = [0, 0, 0, 0, 0];
+          bookedTypes[i].forEach(t => roomCounts[t]++);
+
+          let roomSummary = [];
+          for (let t = 0; t < 5; t++) {
+            if (roomCounts[t] > 0) roomSummary.push(`${roomTypes[t]} × ${roomCounts[t]}`);
+          }
+
+          html += `
+            <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:18px; margin-bottom:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <b style="font-size:16px;">Booking #${i + 1} · ${esc(customerNames[i])}</b>
+                <span class="spec-badge" style="color:${bookingCancelled[i] ? 'var(--danger)' : 'var(--success)'}; font-weight:700;">
+                  ${bookingCancelled[i] ? 'CANCELLED' : 'ACTIVE'}
+                </span>
+              </div>
+              <div style="font-size:13px; color:var(--muted);">Phone: ${customerPhoneNumbers[i]} ${customerEmails[i] ? `· ${customerEmails[i]}` : ''}</div>
+              <div style="margin:6px 0 2px;">Rooms: <b>${roomSummary.join(", ")}</b></div>
+              <div>Duration: <b>${nightsBooked[i][0] || nightsBooked[i]} night(s)</b></div>
+              <div style="font-size:16px; margin-top:4px;">Total Cost: <b>$${totalCosts[i]}</b></div>
+
+              ${!bookingCancelled[i] ? `
+                <div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border); display:flex; gap:10px; align-items:center;">
+                  <button class="room-action-btn" style="border-color:var(--danger); color:var(--danger);" onclick="triggerCancellation(${i})">
+                    Cancel & Request Refund
+                  </button>
+                </div>
+              ` : ''}
+
+              <div class="receipt-slip">
+==================================================<br>
+          GRAND HOTEL - BOOKING RECEIPT<br>
+==================================================<br>
+Booking ID   : #${i + 1}<br>
+Guest Name   : ${esc(customerNames[i])}<br>
+Contact No   : ${customerPhoneNumbers[i]}<br>
+Accommodated : ${roomSummary.join(", ")}<br>
+Stay Length  : ${nightsBooked[i]} night(s)<br>
+Total Billed : $${totalCosts[i]}<br>
+Payment      : 100% Settled Online via KHQR<br>
+Folio Status : ${bookingCancelled[i] ? 'CANCELLED' : 'CONFIRMED'}<br>
+==================================================
+              </div>
+            </div>
+          `;
+        }
+      }
+      $("history-content").innerHTML = html;
+      $("history-modal").classList.add("open");
+    };
+
+    window.triggerCancellation = function(idx) {
+      const input = prompt("How many days before check-in are you cancelling? (Enter a number):", "1");
+      if (input === null) return;
+
+      const daysBefore = parseInt(input, 10);
+      if (isNaN(daysBefore)) {
+        alert("Please enter a valid number of days.");
+        return;
+      }
+
+      let refundAmount = 0;
+      let policyNote = "";
+
+      if (daysBefore >= 1) {
+        refundAmount = totalCosts[idx];
+        policyNote = "Eligible for 100% full refund.";
+      } else if (daysBefore === 0) {
+        refundAmount = Math.floor(totalCosts[idx] * 50 / 100);
+        policyNote = "Eligible for 50% refund (same-day).";
+      } else {
+        refundAmount = 0;
+        policyNote = "No refund is available for past check-in.";
+      }
+
+      bookingCancelled[idx] = true;
+      totalRevenue -= refundAmount;
+
+      alert(`Booking Cancelled Successfully!\n${policyNote}\nCustomer: ${customerNames[idx]}\nRefund Amount: $${refundAmount}\nNote: Refund may take up to 1 day to be sent back to your account.`);
+
+      openHistoryModal();
+    };
+
+    function generateQRSvg() {
+      const N = 21; let s = 7, r = "";
+      for (let y = 0; y < N; y++) {
+        for (let x = 0; x < N; x++) {
+          let on;
+          if ((x < 7 || x >= N - 7) && (y < 7 || y >= N - 7) && !(x >= N - 7 && y >= N - 7)) {
+            const u = x >= N - 7 ? x - (N - 7) : x, v = y >= N - 7 ? y - (N - 7) : y;
+            on = u == 0 || u == 6 || v == 0 || v == 6 || (u >= 2 && u <= 4 && v >= 2 && v <= 4);
+          } else {
+            s = (s * 1103515245 + 12345) & 0x7fffffff;
+            on = (s >> 16) & 1;
+          }
+          if (on) r += `<rect x="${x}" y="${y}" width="1" height="1"/>`;
+        }
+      }
+      return `<svg viewBox="-2 -2 25 25" width="170" height="170"><rect x="-2" y="-2" width="25" height="25" fill="#fff"/><g fill="#111">${r}</g></svg>`;
+    }
+
+    window.toggleTheme = function() {
+      const cur = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    };
+  </script>
+</body>
+
+</html>
